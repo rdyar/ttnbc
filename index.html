@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Drums</title>
+	<link rel="stylesheet" href="main.css">
+</head>
+<body>
+	<div class="keys">
+	<button onclick="playSound(1)">
+		<div class="key"  data-key="1">
+			<kbd>Quick</kbd>
+			<span class="sound">ron</span>
+		</div>
+	</button>
+	<button onclick="playSound(2)">
+		<div class="key"  data-key="2">
+			<kbd>Jerk</kbd>
+			<span class="sound">mo</span>
+		</div>
+	</button>
+	<button onclick="playSound(3)">
+		<div class="key"  data-key="3">
+			<kbd>Mama</kbd>
+			<span class="sound">dan</span>
+		</div>
+	</button>
+	<button onclick="playSound(4)">
+		<div class="key"  data-key="4">
+			<kbd>Plums</kbd>
+			<span class="sound">deb</span>
+		</div>
+	</button>
+	<button onclick="playSound(5)">
+		<div class="key"  data-key="5">
+			<kbd>Plump</kbd>
+			<span class="sound">ron</span>
+		</div>
+	</button>
+	<button onclick="playSound(6)">
+		<div class="key"  data-key="6">
+			<kbd>Cough</kbd>
+			<span class="sound">ron</span>
+		</div>
+	</button>
+	<button onclick="playSound(7)">
+		<div class="key"  data-key="7">
+			<kbd>Chimney</kbd>
+			<span class="sound">deb</span>
+		</div>
+	</button>
+	<button onclick="playSound(8)">
+		<div class="key"  data-key="8">
+			<kbd>Hurricane</kbd>
+			<span class="sound">mo</span>
+		</div>
+	</button>
+	<button onclick="playSound(9)">
+		<div class="key"  data-key="9">
+			<kbd>Coursers</kbd>
+			<span class="sound">mo</span>
+		</div>
+	</button>
+	<button  onclick="playSound(10)">
+		<div class="key" data-key="10">
+			<kbd>Eight</kbd>
+			<span class="sound">ron</span>
+		</div>
+	</button>
+	<button  onclick="playSound(11)">
+		<div class="key" data-key="11">
+			<kbd>Brains</kbd>
+			<span class="sound">dan</span>
+		</div>
+	</button>
+	<button  onclick="playSound(12)">
+		<div class="key" data-key="12">
+			<kbd>Mouse</kbd>
+			<span class="sound">deb</span>
+		</div>
+	</button>
+
+	
+	</div>
+
+<audio  data-key="1" src="sounds/quick.mp3"></audio>
+<audio  data-key="2" src="sounds/jerk.mp3"></audio>
+<audio  data-key="3" src="sounds/mama.mp3"></audio>
+<audio  data-key="4" src="sounds/plums.mp3"></audio>
+<audio  data-key="5" src="sounds/plump.mp3"></audio>
+<audio  data-key="6" src="sounds/cough.mp3"></audio>
+<audio  data-key="7" src="sounds/chimney.mp3"></audio>
+<audio  data-key="8" src="sounds/hurricane.mp3"></audio>
+<audio  data-key="9" src="sounds/coursers.mp3"></audio>
+<audio  data-key="10" src="sounds/eight.mp3"></audio>
+<audio  data-key="11" src="sounds/brains.mp3"></audio>
+<audio  data-key="12" src="sounds/mouse.mp3"></audio>
+
+<script>
+	//window.addEventListener('keydown', playSound); 
+
+	function playSound (e) {
+		const audio = document.querySelector(`audio[data-key="${e}"]`);
+		const key = document.querySelector(`.key[data-key="${e}"]`);
+		if(!audio) return; //if it isn't mapped stop
+		audio.currentTime = 0;
+		audio.play();
+		console.log(key);
+		key.classList.add('playing');
+	}
+	function removeTransition(e){
+		if(e.propertyName !== 'transform') return;
+		console.log(e.propertyName);
+		this.classList.remove('playing');
+
+	}
+	const keys = document.querySelectorAll('.key')
+	keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+</script>
+
+</body>
+</html>

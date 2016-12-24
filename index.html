@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<title>Drums</title>
 	<link rel="stylesheet" href="main.css">
+
 </head>
 <body>
 	<div class="keys">
@@ -81,7 +82,7 @@
 		</div>
 	</button>
 
-	
+	<input type="checkbox" id="cboxR" value="checkboxR"> <label for="cboxR">Stutter</label>
 	</div>
 
 <audio  data-key="1" src="sounds/quick.mp3"></audio>
@@ -97,27 +98,6 @@
 <audio  data-key="11" src="sounds/brains.mp3"></audio>
 <audio  data-key="12" src="sounds/mouse.mp3"></audio>
 
-<script>
-	//window.addEventListener('keydown', playSound); 
-
-	function playSound (e) {
-		const audio = document.querySelector(`audio[data-key="${e}"]`);
-		const key = document.querySelector(`.key[data-key="${e}"]`);
-		if(!audio) return; //if it isn't mapped stop
-		audio.currentTime = 0;
-		audio.play();
-		console.log(key);
-		key.classList.add('playing');
-	}
-	function removeTransition(e){
-		if(e.propertyName !== 'transform') return;
-		console.log(e.propertyName);
-		this.classList.remove('playing');
-
-	}
-	const keys = document.querySelectorAll('.key')
-	keys.forEach(key => key.addEventListener('transitionend', removeTransition));
-</script>
-
+<script src="sounds.js" type="text/javascript"></script>
 </body>
 </html>

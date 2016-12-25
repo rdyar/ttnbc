@@ -6,11 +6,14 @@
 		setTimeout(delay, 1, number);
 		setTimeout(delay, 152, number);
 		setTimeout(delay, 477, number);
-		setTimeout(delay, 592, number);
-		setTimeout(delay, 777, number);
-		setTimeout(delay, 992, number);
-		setTimeout(delay, 1177, number);
-		setTimeout(delay, 1292, number);
+		setTimeout(delay, 792, number);
+		setTimeout(delay, 977, number);
+		setTimeout(delay, 1192, number);
+		setTimeout(delay, 1377, number);
+		setTimeout(delay, 1582, number);
+		setTimeout(delay, 1677, number);
+		setTimeout(delay, 1792, number);
+		setTimeout(removeTransition2, 1712, number);
 			} else 	{
 			playSound2(number);}
 			console.log(checkedValue);
@@ -33,6 +36,11 @@
 		if(e.propertyName !== 'transform') return;
 		console.log(e.propertyName);
 		this.classList.remove('playing');
+
+	}
+	function removeTransition2 (number){
+		const key2 = document.querySelector(`.key[data-key="${number}"]`);
+		key2.classList.remove('playing');
 
 	}
 	const keys = document.querySelectorAll('.key')
